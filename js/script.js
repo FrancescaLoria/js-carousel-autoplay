@@ -32,10 +32,7 @@ let activeClassIndex = 0;
 divContimg[activeClassIndex].classList.add("active");
 
 // RENDO LE IMMAGINI SCORREVOLI CON L'ATTESA DEI SECONDI
-
-// gestisco il "click" sulla freccia in basso
-const belowBtn = document.querySelector(".arrow-below");
-belowBtn.addEventListener("click", function () {
+function imageScrolls() {
   if (activeClassIndex < divContimg.length - 1) {
     // rimuovere dalla foto attuale "active"
     divContimg[activeClassIndex].classList.remove("active");
@@ -50,7 +47,11 @@ belowBtn.addEventListener("click", function () {
     }
     divContimg[activeClassIndex].classList.add("active");
   }
-});
+}
+
+// gestisco il "click" sulla freccia in basso
+const belowBtn = document.querySelector(".arrow-below");
+belowBtn.addEventListener("click", imageScrolls);
 
 // gestisco il click sulla freccia in alto, facendo lo stesso procedimento ma nel senso inverso.
 const aboveBtn = document.querySelector(".arrow-above");
@@ -68,3 +69,5 @@ aboveBtn.addEventListener("click", function () {
   // aggiungo active a quella successiva e creo un loop infinito.
   divContimg[activeClassIndex].classList.add("active");
 });
+
+let myInterval = setInterval(imageScrolls, 3000);
