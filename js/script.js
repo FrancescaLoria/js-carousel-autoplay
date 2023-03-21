@@ -33,6 +33,10 @@ divContimg[activeClassIndex].classList.add("active");
 
 // RENDO LE IMMAGINI SCORREVOLI CON L'ATTESA DEI SECONDI
 function imageScrolls() {
+  // resetto l'intervallo in corso (creato a riga 77)
+  clearInterval(myInterval);
+  // ricreo l'intervallo da capo
+  myInterval = setInterval(imageScrolls, 3000);
   if (activeClassIndex < divContimg.length - 1) {
     // rimuovere dalla foto attuale "active"
     divContimg[activeClassIndex].classList.remove("active");
